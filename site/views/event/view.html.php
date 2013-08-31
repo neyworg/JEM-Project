@@ -86,7 +86,10 @@ class JEMViewEvent extends JViewLegacy
 			$pathway->addItem($this->escape($parent->catname), JRoute::_(JEMHelperRoute::getCategoryRoute($parent->categoryslug)));
 		}
 		$pathway->addItem($this->escape($row->title), JRoute::_(JEMHelperRoute::getRoute($row->slug)));
-
+//##############################################################				
+		$canonical = JRoute::_('index.php?view=event&id='.$row->slug);
+		$document->addHeadLink( 'http://www.usyw.org'.$canonical, 'canonical', 'rel');
+//##############################################################
 		//Get images
 		$dimage = JEMImage::flyercreator($row->datimage, 'event');
 		$limage = JEMImage::flyercreator($row->locimage, 'venue');
